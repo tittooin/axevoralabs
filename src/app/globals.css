@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100;300;400;500;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #FAF8F5; /* Premium Luxury Creamy Off-White */
+  --foreground: #121212; /* Deep Charcoal Black */
+  --crimson: #FF1E46; /* High-contrast Drop Red */
+  --crimson-glow: rgba(255, 30, 70, 0.15);
+  --border-tactical: #E5E0D8; /* Light warm charcoal borders */
+  --border-tactical-focus: #121212;
+  --card-bg: #FFFFFF; /* Clean White cards */
+  --grid-line: rgba(18, 18, 18, 0.025);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-crimson: var(--crimson);
+  --color-crimson-glow: var(--crimson-glow);
+  --color-border-tactical: var(--border-tactical);
+  --color-border-tactical-focus: var(--color-border-tactical-focus);
+  --color-card-bg: var(--card-bg);
+  --color-grid-line: var(--grid-line);
+  
+  --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* Drifting Creamy Background Flow Animation */
+@keyframes creamy-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.creamy-flow-bg {
+  background: linear-gradient(135deg, #FAF8F5 0%, #F3EEE5 40%, #FAF8F5 80%, #F5EFE6 100%);
+  background-size: 300% 300%;
+  animation: creamy-flow 25s ease infinite;
+}
+
+.tactical-grid {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+@keyframes pulse-glow-light {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 30, 70, 0.1), inset 0 0 5px rgba(255, 30, 70, 0.05);
+    border-color: rgba(255, 30, 70, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(255, 30, 70, 0.3), inset 0 0 8px rgba(255, 30, 70, 0.15);
+    border-color: rgba(255, 30, 70, 0.8);
+  }
+}
+
+@keyframes alert-pulse {
+  0% { opacity: 0.7; transform: scale(0.97); }
+  50% { opacity: 1; transform: scale(1.03); }
+  100% { opacity: 0.7; transform: scale(0.97); }
+}
+
+.glow-crimson-light {
+  animation: pulse-glow-light 2s infinite alternate;
+}
+
+.alert-pulse-dot {
+  animation: alert-pulse 1.2s infinite;
+}
+
+/* Custom Scrollbar for Light Luxury Theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #E5E0D8;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #121212;
+}
+
+/* Base resets & layout settings */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.clip-diagonal {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+}
